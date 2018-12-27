@@ -9,18 +9,16 @@ namespace TestApplication
         static void Main(string[] args)
         {
 
-           Task.Run(async () => Update());
+            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/UmerovT/TestApplication"))
+            {
+                mgr.Result.UpdateApp().Wait();
+                mgr.Dispose();
+            }
 
             Console.WriteLine("Hello, Beautiful World!");
             Console.ReadLine();
         }
 
-        public static async void Update()
-        {
-            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/UmerovT/TestApplication"))
-            {
-                await mgr.Result.UpdateApp();                         
-            }
-        }
+        
     }
 }
