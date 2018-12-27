@@ -8,17 +8,19 @@ namespace TestApplication
     {
         static void Main(string[] args)
         {
-            Task.Run(
-            async () =>
-            {
-                using (var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/UmerovT/TestApplication"))
-                {
-                    await mgr.UpdateApp();
-                }
-            });
-            
+
+           Task.Run(async () => Update());
+
             Console.WriteLine("Hello, Beautiful World!");
             Console.ReadLine();
+        }
+
+        public static async void Update()
+        {
+            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/UmerovT/TestApplication"))
+            {
+                await mgr.Result.UpdateApp();                         
+            }
         }
     }
 }
