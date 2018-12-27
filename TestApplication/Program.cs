@@ -17,7 +17,7 @@ namespace TestApplication
                 }
             });
             
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello, Beautiful World!");
             Console.ReadLine();
         }
     }
